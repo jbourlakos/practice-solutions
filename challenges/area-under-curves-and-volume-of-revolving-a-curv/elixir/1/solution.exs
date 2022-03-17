@@ -10,12 +10,6 @@ defmodule Solution do
       |> Enum.map(&String.to_integer/1)
   end
   
-  def reduce_polynomial(polynomial) do
-    polynomial
-    |> Enum.sort(&<=/2)
-    |> _reduce_polynomial([])
-    |> Enum.reverse
-  end
   defp _reduce_polynomial([], reduced), do: reduced
   defp _reduce_polynomial( [{e,c}], reduced ), do: [ {e,c} | reduced ]
   defp _reduce_polynomial( [ {e,c1}, {e,c2} | rest ], reduced ) do
@@ -26,8 +20,16 @@ defmodule Solution do
   end
   
   def to_polynomial(exponents, coefficients) do
-    List.zip([exponents, coefficients])
-    |> reduce_polynomial()
+    polynomial_list = 
+      List.zip([exponents, coefficients])
+      |> Enum.sort(&<=/2)
+      |> _reduce_polynomial([])
+      |> Enum.reverse
+     fn(x) ->
+        polynomial_list
+          |> Enum.map(fn({exp, coeff}) -> :math.pow(x, exp) * coeff end)
+          |> Enum.sum
+     end
   end
   
   # TODO: add more functions here
@@ -39,8 +41,12 @@ defmodule Solution do
     [left, right] = ints_from_line()
     
     polynomial = to_polynomial(exponents, coefficients)
+
+    poly_sum = left..right//@subintervals_length
+    |> Enum.map(&(polynomial.(&1)))
+    |> Enum.sum
     
-    IO.inspect(polynomial)
+    IO.inspect(poly_sum)
     
     # TODO: finish main
 
