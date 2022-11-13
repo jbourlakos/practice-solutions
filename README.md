@@ -1,2 +1,6 @@
 # hackerrank-solutions
-My coding solutions practicing at HackerRank.com
+
+My coding solutions practicing at:
+
+- HackerRank.com
+- LeetCode.com
