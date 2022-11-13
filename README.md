@@ -1,4 +1,4 @@
-# hackerrank-solutions
+# practice-solutions
 
 My coding solutions practicing at:
 
