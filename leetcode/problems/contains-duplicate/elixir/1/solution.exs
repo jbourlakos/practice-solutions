@@ -3,11 +3,9 @@ defmodule Solution do
     @moduledoc """
         Task URL: https://leetcode.com/problems/contains-duplicate
         
-        Method 1: Sort first then search for adjacent duplicates
+        Submission URL: https://leetcode.com/submissions/detail/845203648/
         
-        Time submitted: 11/16/2022 09:45
-        Runtime:        489 ms < 90% Elixir
-        Memory:         71.1 MB < 66.67% Elixir
+        Method 1: Sort first then search for adjacent duplicates       
     """
 
   @spec contains_duplicate(nums :: [integer]) :: boolean
